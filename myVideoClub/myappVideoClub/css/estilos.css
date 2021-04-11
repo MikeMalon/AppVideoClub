@@ -1,5 +1,9 @@
 
-.bg-transparente {
-    
-    background-color: rgba(0,0,0,0.5)
+ body {
+
+    background-image: url("../imgs/3d-glasses-with-popcorns-clapperboard-concrete-backdrop.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
 }
