@@ -24,7 +24,8 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark mb-5">
+    <!--NAVEGACION-->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark ">
         <div class="container-xl">
 
             <a class="navbar-brand fs-3 text-warning fw-bold text-uppercase" href="#">Shitflix</a>
@@ -60,66 +61,137 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg-end text-small" aria-labelledby="dropdownUser1">
                         <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Ajustes</a></li>
+                        <li><a class="dropdown-item" href="#">Perfil</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
 
+    <!--CARRUSEL-->
+
+    <div id="carouselExampleCaptions" class="carousel slide mb-4" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active text-center">
+                <img src="../../../imgs/space-jam-a-new-legacy-trailer-lebron-james.jpg" class="img-fluid" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>First slide label</h5>
+                    <p>Some representative placeholder content for the first slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item text-center">
+                <img src="../../../imgs/zlb444fb.jpg" class="img-fluid" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>Some representative placeholder content for the second slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item text-center">
+                <img src="../../../imgs/luca-disney-pixar-trailer-poster.jpg" class="img-fluid" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Third slide label</h5>
+                    <p>Some representative placeholder content for the third slide.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!--PELICULAS-->
 
     <div class="container-lg mb-5">
         <div class="row g-4">
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-6">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img
                         src="https://www.joblo.com/assets/images/joblo/posters/2021/04/army-of-the-dead-poster.jpg"
                         class="img-fluid   img-thumbnail btn-outline-primary"></a>
+                <p class="text-center my-2 text-light"><a href="#" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop" class="text-decoration-none link-light">Army of the Dead</a>
+                </p>
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-6">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img
                         src="https://www.joblo.com/assets/images/joblo/posters/2021/03/godzilla-kong-poster.jpg"
                         class=" img-fluid  img-thumbnail btn-outline-primary"></a>
+                <p class="text-center my-2 text-light"><a href="#" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop" class="text-decoration-none link-light">Godzilla vs Kong</a>
+                </p>
 
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-6">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img
                         src="https://www.joblo.com/assets/images/joblo/posters/2021/03/raya-last-dragon-poster-main.jpg"
                         class="img-fluid   img-thumbnail btn-outline-primary"></a>
+                <p class="text-center my-2 text-light"><a href="#" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop" class="text-decoration-none link-light">Raya The Last Dragon</a>
+                </p>
 
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-6">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img
                         src="https://www.joblo.com/assets/images/joblo/posters/2020/09/No-Time-to-Die-November-poster.jpg"
                         class=" img-fluid  img-thumbnail btn-outline-primary"></a>
+                <p class="text-center my-2 text-light"><a href="#" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop" class="text-decoration-none link-light">James Bond - No time to die</a>
+                </p>
 
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-6">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img
                         src="https://www.joblo.com/assets/images/joblo/posters/2021/04/thunder-force-netflix-151308.jpg"
                         class="img-fluid   img-thumbnail btn-outline-primary"></a>
+                <p class="text-center my-2 text-light"><a href="#" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop" class="text-decoration-none link-light">Thunder Force</a>
+                </p>
 
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-6">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img
                         src="https://www.joblo.com/assets/images/joblo/posters/2020/03/2EF9FAE7-B888-4DBA-868D-B4E289BAE769.jpeg"
                         class="img-fluid   img-thumbnail btn-outline-primary"></a>
+                <p class="text-center my-2 text-light"><a href="#" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop" class="text-decoration-none link-light">Black Widow</a>
+                </p>
 
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-6">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img
                         src="https://www.joblo.com/assets/images/joblo/posters/2021/03/Coming-2-America-Official-Poster.jpg"
                         class="img-fluid   img-thumbnail btn-outline-primary"></a>
+                <p class="text-center my-2 text-light"><a href="#" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop" class="text-decoration-none link-light">Coming 2 America</a>
+                </p>
 
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-3 col-6">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img
                         src="https://www.joblo.com/assets/images/joblo/posters/2020/10/addamswedposter.jpg"
                         class="img-fluid   img-thumbnail btn-outline-primary"></a>
+                <p class="text-center my-2 text-light"><a href="#" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop" class="text-decoration-none link-light">The Adams 2</a>
+                </p>
 
             </div>
 
@@ -130,19 +202,19 @@
     <!-- Button trigger modal -->
 
 
-    <!-- Modal -->
+    <!-- MODAL -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Army of the Dead</h5>
+                    <h5 class="modal-title text-light" id="staticBackdropLabel">Army of the Dead</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row g-2">
-                        <div class="col-lg-4">
+                        <div class="col-auto">
                             <div class="embed-responsive embed-responsive-16by9">
                                 <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/H83kjG5RCT8"
                                     title="YouTube video player" frameborder="0"
@@ -151,7 +223,7 @@
                                 </iframe>
                             </div>
                         </div>
-                        <div class="col-xl align-items-center">
+                        <div class="col-auto align-items-center">
                             <p class="text-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi
                                 dolores sunt recusandae
                                 voluptate consequuntur sed vel optio odio facere excepturi, necessitatibus voluptatibus
@@ -170,6 +242,17 @@
             </div>
         </div>
     </div>
+
+    <!-- FOOTER -->
+
+    <footer class="footer py-3 bg-dark">
+        <div class="container-lg text-center">
+
+            <p class="text-light m-0">&copy; Adrián Salas y Miguel Díez</p>
+            
+        </div>
+    </footer>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
