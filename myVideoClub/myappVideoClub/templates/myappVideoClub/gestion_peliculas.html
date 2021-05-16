@@ -1,181 +1,272 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-
-<head>
+  <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="../../css/normalize.css">
-    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Shitflix</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark mb-5">
-        <div class="container-xl">
+      <div class="container-xl">
+        <a
+          class="navbar-brand fs-3 text-warning fw-bold text-uppercase"
+          href="#"
+          >Shitflix</a
+        >
 
-            <a class="navbar-brand fs-3 text-warning fw-bold text-uppercase" href="#">Shitflix</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
-                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pelí­culas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Administrar Pelí­culas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Administrar Usuarios</a>
+            </li>
+          </ul>
 
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pelí­culas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Administrar Pelí­culas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Administrar Usuarios</a>
-                    </li>
-                </ul>
+          <form class="d-flex text-end py-2">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Buscar..."
+              aria-label="Search"
+            />
+          </form>
 
-
-                <form class="d-flex text-end py-2">
-                    <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
-
-                </form>
-
-                <div class="dropdown d-flex text-end py-2 ">
-                    <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser1"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-lg-end text-small" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Ajustes</a></li>
-                        <li><a class="dropdown-item" href="#">Perfil</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
-                    </ul>
-                </div>
-            </div>
+          <div class="dropdown d-flex text-end py-2">
+            <a
+              href="#"
+              class="d-block link-light text-decoration-none dropdown-toggle"
+              id="dropdownUser1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img
+                src="https://github.com/mdo.png"
+                alt="mdo"
+                width="32"
+                height="32"
+                class="rounded-circle"
+              />
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-lg-end text-small"
+              aria-labelledby="dropdownUser1"
+            >
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li><a class="dropdown-item" href="#">Ajustes</a></li>
+              <li><a class="dropdown-item" href="#">Perfil</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+            </ul>
+          </div>
         </div>
+      </div>
     </nav>
 
     <div class="container-lg">
-        <p class="fs-5 fw-bold">Lista de Películas</p>
+      <p class="fs-5 fw-bold">Lista de Películas</p>
     </div>
-
 
     <!--TABLA PELÍCULAS-->
     <div class="container-lg table-responsive mb-3">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Título</th>
-                    <th scope="col">Año</th>
-                    <th scope="col">Director</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>@fat</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Bird</td>
-                    <td>@twitter</td>
-                    <td>@mdo</td>
-                </tr>
-            </tbody>
-        </table>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Título</th>
+            <th scope="col">Año</th>
+            <th scope="col">Director</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for p in peliculas %}
+          <tr>
+            <th scope="row">{{p.id}}</th>
+            <td>{{p.nombre}}</td>
+            <td>{{p.año}}</td>
+            <td>{{p.director}}</td>
+            <td>
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Editar</button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href={% url 'modificar_pelicula' %}>Modificar</a></li>
+                  <li><a class="dropdown-item" href={% url 'eliminar_pelicula' p.id %}>Eliminar</a></li>
+                </ul>
+            </td>  
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
 
     <!--MODAL AÑADIR PELICULA-->
 
     <!-- Button trigger modal -->
-    <div class="container-lg ">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Añadir película
-        </button>
+    <div class="container-lg">
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        Añadir película
+      </button>
     </div>
-
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Añadir Película</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-lg d-flex justify-content-center">
-                        <form class="d-md-inline-block w-100 fw-bold">
-                            <label class="form-label">Nombre película</label>
-                            <input class="form-control border mb-3" type="search" placeholder="Nombre película"
-                                aria-label="Search">
-                            <label class="form-label">URL película</label>
-                            <input class="form-control mb-3" type="search" placeholder="URL película"
-                                aria-label="Search">
-                            <label class="form-label">Descripción</label>
-                            <input class="form-control mb-3" type="search" placeholder="Descripción"
-                                aria-label="Search">
-                            <label class="form-label">Año</label>
-                            <input class="form-control mb-3" type="search" placeholder="Año" aria-label="Search">
-                            <label class="form-label">Director</label>
-                            <input class="form-control mb-3" type="search" placeholder="Director" aria-label="Search">
-                            <label class="form-label">Reparto</label>
-                            <input class="form-control mb-3" type="search" placeholder="Reparto" aria-label="Search">
-                            <label class="form-label">URL de la portada</label>
-                            <input class="form-control mb-3" type="search" placeholder="URL de la portada"
-                                aria-label="Search">
-                            <label class="form-label">Valoración</label>
-                            <input class="form-control mb-3" type="search" placeholder="Valoración" aria-label="Search">
-
-
-                        </form>
-
-                    </div>
-                </div>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Añadir Película</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-lg d-flex justify-content-center">
+              <form action={% url 'gestion_peliculas' %} method="post" class="d-md-inline-block w-100 fw-bold">
+                {% csrf_token %}
+                <label class="form-label">Nombre película</label>
+                <input
+                  class="form-control border mb-3"
+                  type="search" name="nombre"
+                  placeholder="Nombre película"
+                  aria-label="Search"
+                />
+                <label class="form-label">URL película</label>
+                <input
+                  class="form-control mb-3"
+                  type="search" name="urlPeli"
+                  placeholder="URL película"
+                  aria-label="Search"
+                />
+                <label class="form-label">Descripción</label>
+                <input
+                  class="form-control mb-3"
+                  type="search"
+                  name="descripcion"
+                  placeholder="Descripción"
+                  aria-label="Search"
+                />
+                <label class="form-label">Año</label>
+                <input
+                  class="form-control mb-3"
+                  type="search"
+                  name="año"
+                  placeholder="Año"
+                  aria-label="Search"
+                />
+                <label class="form-label">Director</label>
+                <input
+                  class="form-control mb-3"
+                  type="search"
+                  name="director"
+                  placeholder="Director"
+                  aria-label="Search"
+                />
+                <label class="form-label">Reparto</label>
+                <input
+                  class="form-control mb-3"
+                  type="search"
+                  name="reparto"
+                  placeholder="Reparto"
+                  aria-label="Search"
+                />
+                <label class="form-label">URL de la portada</label>
+                <input
+                  class="form-control mb-3"
+                  type="search"
+                  name="urlPortada"
+                  placeholder="URL de la portada"
+                  aria-label="Search"
+                />
+                <label class="form-label">Valoración</label>
+                <input
+                  class="form-control mb-3"
+                  type="search"
+                  name="valoracion"
+                  placeholder="Valoración"
+                  aria-label="Search"
+                />
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
-                </div>
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Cerrar
+                    </button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                  </div>
+              </form>
             </div>
+          </div>
+          
         </div>
+      </div>
     </div>
-
-
 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-        crossorigin="anonymous"></script>
-
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
