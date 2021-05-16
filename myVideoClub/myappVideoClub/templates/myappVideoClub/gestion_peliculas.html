@@ -41,9 +41,6 @@
                         <a class="nav-link" href="#">Pelí­culas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Mi lista</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="#">Administrar Pelí­culas</a>
                     </li>
                     <li class="nav-item">
@@ -64,26 +61,32 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg-end text-small" aria-labelledby="dropdownUser1">
                         <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Ajustes</a></li>
+                        <li><a class="dropdown-item" href="#">Perfil</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!--TABLA USUARIOS-->
     <div class="container-lg">
+        <p class="fs-5 fw-bold">Lista de Películas</p>
+    </div>
+
+
+    <!--TABLA PELÍCULAS-->
+    <div class="container-lg table-responsive mb-3">
         <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Email</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Año</th>
+                    <th scope="col">Director</th>
                 </tr>
             </thead>
             <tbody>
@@ -91,20 +94,77 @@
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>@mdo</td>
+                    <td>@mdo</td>
                 </tr>
                 <tr>
                     <th scope="row">2</th>
                     <td>Jacob</td>
                     <td>@fat</td>
+                    <td>@mdo</td>
                 </tr>
                 <tr>
                     <th scope="row">3</th>
                     <td>Bird</td>
                     <td>@twitter</td>
+                    <td>@mdo</td>
                 </tr>
             </tbody>
         </table>
+    </div>
 
+    <!--MODAL AÑADIR PELICULA-->
+
+    <!-- Button trigger modal -->
+    <div class="container-lg ">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Añadir película
+        </button>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Añadir Película</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-lg d-flex justify-content-center">
+                        <form class="d-md-inline-block w-100 fw-bold">
+                            <label class="form-label">Nombre película</label>
+                            <input class="form-control border mb-3" type="search" placeholder="Nombre película"
+                                aria-label="Search">
+                            <label class="form-label">URL película</label>
+                            <input class="form-control mb-3" type="search" placeholder="URL película"
+                                aria-label="Search">
+                            <label class="form-label">Descripción</label>
+                            <input class="form-control mb-3" type="search" placeholder="Descripción"
+                                aria-label="Search">
+                            <label class="form-label">Año</label>
+                            <input class="form-control mb-3" type="search" placeholder="Año" aria-label="Search">
+                            <label class="form-label">Director</label>
+                            <input class="form-control mb-3" type="search" placeholder="Director" aria-label="Search">
+                            <label class="form-label">Reparto</label>
+                            <input class="form-control mb-3" type="search" placeholder="Reparto" aria-label="Search">
+                            <label class="form-label">URL de la portada</label>
+                            <input class="form-control mb-3" type="search" placeholder="URL de la portada"
+                                aria-label="Search">
+                            <label class="form-label">Valoración</label>
+                            <input class="form-control mb-3" type="search" placeholder="Valoración" aria-label="Search">
+
+
+                        </form>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 

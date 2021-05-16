@@ -43,9 +43,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Pelí­culas</a>
                     </li>
+                    {% if can_add_pelis and can_change_pelis and can_delete_pelis %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Mi lista</a>
+                        <a class="nav-link" href=#>Administrar Pelí­culas</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href={% url 'gestion_usuarios' %} >Administrar Usuarios</a>
+                    </li>
+                    {% endif %}
                 </ul>
 
 
@@ -66,7 +71,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+                        <li><a class="dropdown-item" href={% url 'logout' %}>Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </div>
@@ -86,21 +91,22 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active text-center">
-                <img src="../../../imgs/space-jam-a-new-legacy-trailer-lebron-james.jpg" class="img-fluid" alt="...">
+
+                <img src="../../imgs/space-jam-a-new-legacy-trailer-lebron-james.jpg" class="img-fluid" alt="Lebron">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>First slide label</h5>
                     <p>Some representative placeholder content for the first slide.</p>
                 </div>
             </div>
             <div class="carousel-item text-center">
-                <img src="../../../imgs/zlb444fb.jpg" class="img-fluid" alt="...">
+                <img src="../../imgs/zlb444fb.jpg" class="img-fluid" alt="Space Jam">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Second slide label</h5>
                     <p>Some representative placeholder content for the second slide.</p>
                 </div>
             </div>
             <div class="carousel-item text-center">
-                <img src="../../../imgs/luca-disney-pixar-trailer-poster.jpg" class="img-fluid" alt="...">
+                <img src="../../imgs/luca-disney-pixar-trailer-poster.jpg" class="img-fluid" alt="Luca Disney">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Third slide label</h5>
                     <p>Some representative placeholder content for the third slide.</p>
@@ -118,6 +124,8 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+
+    
 
     <!--PELICULAS-->
 
@@ -145,7 +153,8 @@
                         src="https://www.joblo.com/assets/images/joblo/posters/2021/03/raya-last-dragon-poster-main.jpg"
                         class="img-fluid   img-thumbnail btn-outline-primary"></a>
                 <p class="text-center my-2 text-light"><a href="#" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop" class="text-decoration-none link-light">Raya The Last Dragon</a>
+                        data-bs-target="#staticBackdrop" class="text-decoration-none link-light">Raya The Last
+                        Dragon</a>
                 </p>
 
             </div>
@@ -154,7 +163,8 @@
                         src="https://www.joblo.com/assets/images/joblo/posters/2020/09/No-Time-to-Die-November-poster.jpg"
                         class=" img-fluid  img-thumbnail btn-outline-primary"></a>
                 <p class="text-center my-2 text-light"><a href="#" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop" class="text-decoration-none link-light">James Bond - No time to die</a>
+                        data-bs-target="#staticBackdrop" class="text-decoration-none link-light">James Bond - No time to
+                        die</a>
                 </p>
 
             </div>
@@ -205,7 +215,7 @@
     <!-- MODAL -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
                     <h5 class="modal-title text-light" id="staticBackdropLabel">Army of the Dead</h5>
@@ -214,16 +224,15 @@
                 </div>
                 <div class="modal-body">
                     <div class="row g-2">
-                        <div class="col-auto">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/H83kjG5RCT8"
-                                    title="YouTube video player" frameborder="0"
+                        <div class="col-12">
+                            <div class="ratio ratio-16x9">
+                                <iframe src="https://www.youtube.com/embed/H83kjG5RCT8" title="YouTube video player"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen>
                                 </iframe>
                             </div>
                         </div>
-                        <div class="col-auto align-items-center">
+                        <div class="col-12">
                             <p class="text-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi
                                 dolores sunt recusandae
                                 voluptate consequuntur sed vel optio odio facere excepturi, necessitatibus voluptatibus
@@ -249,7 +258,7 @@
         <div class="container-lg text-center">
 
             <p class="text-light m-0">&copy; Adrián Salas y Miguel Díez</p>
-            
+
         </div>
     </footer>
 
