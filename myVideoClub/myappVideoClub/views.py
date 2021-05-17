@@ -17,9 +17,9 @@ def index(request):
      'can_add_pelis' : request.user.has_perm('myappVideoClub.add_pelicula'),
      'can_change_pelis' : request.user.has_perm('myappVideoClub.change_pelicula'),
      'can_delete_pelis' : request.user.has_perm('myappVideoClub.delete_pelicula'),
-     'can_add_users' :    request.user.has_perm('myappVideoClub.add_user'),
-     'can_change_users' : request.user.has_perm('myappVideoClub.change_user'),
-     'can_delete_users' : request.user.has_perm('myappVideoClub.delete_user'),
+     'can_add_users'    : request.user.has_perm('auth.add_user'),
+     'can_change_users' : request.user.has_perm('auth.change_user'),
+     'can_delete_users' : request.user.has_perm('auth.delete_user'),
    }
    return render(request, 'myappVideoClub/index.html',context)
 
@@ -27,7 +27,13 @@ def index(request):
 def gestion_usuarios(request):
    if request.method == 'GET':
       context = {
-         'usuarios': User.objects.all()
+         'usuarios': User.objects.all(),
+         'can_add_pelis' : request.user.has_perm('myappVideoClub.add_pelicula'),
+         'can_change_pelis' : request.user.has_perm('myappVideoClub.change_pelicula'),
+         'can_delete_pelis' : request.user.has_perm('myappVideoClub.delete_pelicula'),
+         'can_add_users'    : request.user.has_perm('auth.add_user'),
+         'can_change_users' : request.user.has_perm('auth.change_user'),
+         'can_delete_users' : request.user.has_perm('auth.delete_user'),
       }
       return render(request,'myappVideoClub/gestion_usuarios.html',context)
    elif request.method == 'POST':
@@ -42,7 +48,13 @@ def gestion_usuarios(request):
 def gestion_peliculas(request):
    if request.method == 'GET':
       context = {
-         'peliculas': models.Pelicula.objects.all()
+         'peliculas': models.Pelicula.objects.all(),
+         'can_add_pelis' : request.user.has_perm('myappVideoClub.add_pelicula'),
+         'can_change_pelis' : request.user.has_perm('myappVideoClub.change_pelicula'),
+         'can_delete_pelis' : request.user.has_perm('myappVideoClub.delete_pelicula'),
+         'can_add_users'    : request.user.has_perm('auth.add_user'),
+         'can_change_users' : request.user.has_perm('auth.change_user'),
+         'can_delete_users' : request.user.has_perm('auth.delete_user'),
       }
       return render(request,'myappVideoClub/gestion_peliculas.html',context)
    elif request.method == 'POST':

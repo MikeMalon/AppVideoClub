@@ -29,82 +29,57 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark mb-5">
-      <div class="container-xl">
-        <a
-          class="navbar-brand fs-3 text-warning fw-bold text-uppercase"
-          href="#"
-          >Shitflix</a
-        >
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark ">
+        <div class="container-xl">
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarTogglerDemo02"
-          aria-controls="navbarTogglerDemo02"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+            <a class="navbar-brand fs-3 text-warning fw-bold text-uppercase" href="#">Shitflix</a>
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pelí­culas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Administrar Pelí­culas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Administrar Usuarios</a>
-            </li>
-          </ul>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-          <form class="d-flex text-end py-2">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Buscar..."
-              aria-label="Search"
-            />
-          </form>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href={% url 'index' %}>Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href={% url 'index' %}>Pelí­culas</a>
+                    </li>
+                    {% if can_add_pelis and can_change_pelis and can_delete_pelis and can_add_users and can_change_users and can_delete_users %}
+                    <li class="nav-item">
+                        <a class="nav-link" href={% url 'gestion_peliculas' %}>Administrar Pelí­culas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href={% url 'gestion_usuarios' %} >Administrar Usuarios</a>
+                    </li>
+                    {% endif %}
+                </ul>
 
-          <div class="dropdown d-flex text-end py-2">
-            <a
-              href="#"
-              class="d-block link-light text-decoration-none dropdown-toggle"
-              id="dropdownUser1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <img
-                src="https://github.com/mdo.png"
-                alt="mdo"
-                width="32"
-                height="32"
-                class="rounded-circle"
-              />
-            </a>
-            <ul
-              class="dropdown-menu dropdown-menu-lg-end text-small"
-              aria-labelledby="dropdownUser1"
-            >
-              <li><a class="dropdown-item" href="#">New project...</a></li>
-              <li><a class="dropdown-item" href="#">Ajustes</a></li>
-              <li><a class="dropdown-item" href="#">Perfil</a></li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
-            </ul>
-          </div>
+
+                <form class="d-flex py-2">
+                    <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
+
+                </form>
+
+                <div class="dropdown d-flex text-end py-2 ">
+                    <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-lg-end text-small" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Ajustes</a></li>
+                        <li><a class="dropdown-item" href="#">Perfil</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href={% url 'logout' %}>Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
     </nav>
 
     <div class="container-lg">

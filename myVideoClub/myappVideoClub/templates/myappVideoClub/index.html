@@ -38,10 +38,10 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href={% url 'index' %}>Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pelí­culas</a>
+                        <a class="nav-link" href={% url 'index' %}>Pelí­culas</a>
                     </li>
                     {% if can_add_pelis and can_change_pelis and can_delete_pelis and can_add_users and can_change_users and can_delete_users %}
                     <li class="nav-item">
