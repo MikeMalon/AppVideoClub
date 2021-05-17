@@ -17,6 +17,9 @@ def index(request):
      'can_add_pelis' : request.user.has_perm('myappVideoClub.add_pelicula'),
      'can_change_pelis' : request.user.has_perm('myappVideoClub.change_pelicula'),
      'can_delete_pelis' : request.user.has_perm('myappVideoClub.delete_pelicula'),
+     'can_add_users' :    request.user.has_perm('myappVideoClub.add_user'),
+     'can_change_users' : request.user.has_perm('myappVideoClub.change_user'),
+     'can_delete_users' : request.user.has_perm('myappVideoClub.delete_user'),
    }
    return render(request, 'myappVideoClub/index.html',context)
 
