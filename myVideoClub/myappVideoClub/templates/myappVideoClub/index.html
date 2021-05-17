@@ -128,17 +128,30 @@
     
 
     <!--PELICULAS-->
-
+    <!--https://www.joblo.com/assets/images/joblo/posters/2021/04/army-of-the-dead-poster.jpg-->
     <div class="container-lg mb-5">
         <div class="row g-4">
+            {% for p in peliculas %}
             <div class="col-md-3 col-6">
-                <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img
-                        src="https://www.joblo.com/assets/images/joblo/posters/2021/04/army-of-the-dead-poster.jpg"
+                {% if p.urlPortada != "" %}
+                <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    
+                    <img
+                        src={{p.urlPortada}}
                         class="img-fluid   img-thumbnail btn-outline-primary"></a>
+                {% else %}
+                <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    
+                    <img
+                        src="https://www.joblo.com/assets/images/oldsite/posters/images/full/shit-poster.jpg"
+                        class="img-fluid   img-thumbnail btn-outline-primary"></a>       
+                {% endif %}        
                 <p class="text-center my-2 text-light"><a href="#" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop" class="text-decoration-none link-light">Army of the Dead</a>
-                </p>
+                        data-bs-target="#staticBackdrop" class="text-decoration-none link-light">{{p.nombre}}</a>
+                </p>   
             </div>
+            {% endfor %}
+            <!--
             <div class="col-md-3 col-6">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img
                         src="https://www.joblo.com/assets/images/joblo/posters/2021/03/godzilla-kong-poster.jpg"
@@ -204,7 +217,7 @@
                 </p>
 
             </div>
-
+        -->
         </div>
     </div>
 
