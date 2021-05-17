@@ -45,7 +45,7 @@
                     </li>
                     {% if can_add_pelis and can_change_pelis and can_delete_pelis %}
                     <li class="nav-item">
-                        <a class="nav-link" href=#>Administrar Pelí­culas</a>
+                        <a class="nav-link" href={% url 'gestion_peliculas' %}>Administrar Pelí­culas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href={% url 'gestion_usuarios' %} >Administrar Usuarios</a>

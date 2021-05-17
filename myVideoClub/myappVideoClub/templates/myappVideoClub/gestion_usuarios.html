@@ -74,12 +74,18 @@
         </div>
     </nav>
 
+    
     <div class="container-lg">
-        <p class="fs-5 fw-bold">Lista de Usuarios</p>
+        
+        <p class="fs-5 fw-bold">{% block titulo %} Lista de Usuarios {% endblock %}</p>
+        
     </div>
+    
 
     <!--TABLA USUARIOS-->
+    
     <div class="container-lg table-responsive mb-3">
+        {% block tabla %}
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -100,19 +106,22 @@
                 {% endfor %}
             </tbody>
         </table>
-
+        {% endblock %}
     </div>
 
 
-
+    
     <div class="container-lg ">
+        
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Añadir usuario
+            {% block boton %} Añadir usuario {% endblock%}
         </button>
+        
     </div>
 
 
     <!-- Modal -->
+    {% block modal %}
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -143,7 +152,7 @@
             </div>
         </div>
     </div>
-
+    {% endblock %}
 
 
     <!-- Optional JavaScript; choose one of the two! -->

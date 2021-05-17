@@ -1,3 +1,4 @@
+from django import template
 from django.shortcuts import render, redirect
 # Create your views here.
 from django.http import HttpResponse
@@ -32,6 +33,11 @@ def gestion_usuarios(request):
       nuevoUsuario = User.objects.create_user(nombre,contraseña,correo)
       nuevoUsuario.save()
       return redirect('gestion_usuarios')
+
+def gestion_peliculas(request):
+
+   return render(request, 'myappVideoClub/gestion_peliculas.html',{})
+     
       
 
 def userlogin(request):
