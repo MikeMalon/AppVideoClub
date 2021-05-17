@@ -14,6 +14,7 @@ from myappVideoClub import models
 def index(request):
    context = {
      'peliculas' : models.Pelicula.objects.all(),
+     'nombres' : models.Pelicula.objects.values('nombre'),
      'can_add_pelis' : request.user.has_perm('myappVideoClub.add_pelicula'),
      'can_change_pelis' : request.user.has_perm('myappVideoClub.change_pelicula'),
      'can_delete_pelis' : request.user.has_perm('myappVideoClub.delete_pelicula'),
@@ -83,6 +84,28 @@ def eliminar_usuario(request,User_id):
    for u in usuarios:
       u.delete()
    return redirect('gestion_usuarios') #Volvemos a la pantalla principal de los usuarios del administrador
+
+def modificar_pelicula(request,Pelicula_id):
+   peliculas = models.Pelicula.objects.filter(id=Pelicula_id)
+   nombrePeli = request.POST['nombre']
+   urlPeli = request.POST['urlPeli']
+   descripcion = request.POST['descripcion']
+   año = request.POST['año']
+   director = request.POST['director']
+   reparto = request.POST['reparto']
+   urlPortada = request.POST['urlPortada']
+   valoracion = request.POST['valoracion']
+   for p in peliculas:
+      p.nombre = nombrePeli
+      p.urlPeli = urlPeli 
+      p.descripcion = descripcion
+      p.año = año
+      p.director = director
+      p.reparto = reparto
+      p.urlPortada = urlPortada
+      p.valoracion = valoracion
+      p.save()
+   return redirect('gestion_peliculas')
 
 def userlogin(request):
    if request.method == 'GET':

@@ -131,20 +131,20 @@
             {% for p in peliculas %}
             <div class="col-md-3 col-6">
                 {% if p.urlPortada != "" %}
-                <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#m{{ p.id }}">
                     
                     <img
-                        src={{p.urlPortada}}
+                        src="{{ p.urlPortada }}"
                         class="img-fluid   img-thumbnail btn-outline-primary"></a>
                 {% else %}
-                <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#m{{ p.id }}">
                     
                     <img
                         src="https://www.joblo.com/assets/images/oldsite/posters/images/full/shit-poster.jpg"
                         class="img-fluid   img-thumbnail btn-outline-primary"></a>       
                 {% endif %}        
                 <p class="text-center my-2 text-light"><a href="#" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop" class="text-decoration-none link-light">{{p.nombre}}</a>
+                        data-bs-target="#m{{ p.id }}" class="text-decoration-none link-light">{{ p.nombre }}</a>
                 </p>   
             </div>
             {% endfor %}
@@ -223,35 +223,56 @@
 
 
     <!-- MODAL -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    {% for p in peliculas %}
+    <div class="modal fade" id="m{{ p.id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
-                    <h5 class="modal-title text-light" id="staticBackdropLabel">Army of the Dead</h5>
+                    <h5 class="modal-title text-light" id="staticBackdropLabel">{{p.nombre}}</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row g-2">
-                        <div class="col-12">
+                        <div class="col-8">
                             <div class="ratio ratio-16x9">
-                                <iframe src="https://www.youtube.com/embed/H83kjG5RCT8" title="YouTube video player"
+                                <iframe src={{ p.urlPeli }} title="YouTube video player"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen>
                                 </iframe>
                             </div>
                         </div>
+                        
+                        <div class="col-4">
+                            {% if p.año != "" %}
+                            <p class="text-light">Año: {{ p.año }}</p>
+                            {% else %}
+                            <!--Llamar a la API-->
+                            {% endif %}
+                            {% if p.director != "" %}
+                            <p class="text-light">Director: {{ p.director }}</p>
+                            {% else %}
+                            <!--Llamar a la API-->
+                            {% endif %}
+                            {% if p.reparto != "" %}
+                            <p class="text-light">Reparto: {{ p.reparto }}</p>
+                            {% else %}
+                            <!--Llamar a la API-->
+                            {% endif %}
+                            {% if p.valoracion != "" %}
+                            <p class="text-light">Valoración: {{ p.valoracion }}</p>
+                            {% else %}
+                            <!--Llamar a la API-->
+                            {% endif %}
+                        </div>
                         <div class="col-12">
-                            <p class="text-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi
-                                dolores sunt recusandae
-                                voluptate consequuntur sed vel optio odio facere excepturi, necessitatibus voluptatibus
-                                aspernatur nesciunt eaque, autem aperiam perferendis veniam modi illo alias rem dolorem
-                                at
-                                suscipit nisi. Culpa consequatur perferendis impedit illo laborum, eum dolorum sint
-                                ducimus
-                                aut aliquam modi!</p>
-
+                            {% if p.descripcion != "" %}
+                            <p class="text-light">{{ p.descripcion }}</p>
+                            {% else %}
+                            <!--Llamar a la API-->
+                            {% endif %}
                         </div>
                     </div>
 
@@ -260,7 +281,9 @@
 
             </div>
         </div>
+       
     </div>
+    {% endfor %}
 
     <!-- FOOTER -->
 

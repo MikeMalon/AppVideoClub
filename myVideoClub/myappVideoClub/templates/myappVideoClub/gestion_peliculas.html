@@ -108,7 +108,7 @@
             <td>
                 <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Editar</button>
                 <ul class="dropdown-menu dropdown-menu-end">
-                  <li><a class="dropdown-item" href={% url 'modificar_pelicula' %}>Modificar</a></li>
+                  <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#m{{p.id}}">Modificar</a></li>
                   <li><a class="dropdown-item" href={% url 'eliminar_pelicula' p.id %}>Eliminar</a></li>
                 </ul>
             </td>  
@@ -132,7 +132,7 @@
       </button>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal añadir película -->
     <div
       class="modal fade"
       id="exampleModal"
@@ -234,6 +234,111 @@
         </div>
       </div>
     </div>
+
+     <!-- Modal modificar película -->
+     {% for p in peliculas %}
+     <div
+     class="modal fade"
+     id="m{{p.id}}"
+     tabindex="-1"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true"
+   >
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title" id="exampleModalLabel">Modificar Película</h5>
+           <button
+             type="button"
+             class="btn-close"
+             data-bs-dismiss="modal"
+             aria-label="Close"
+           ></button>
+         </div>
+         <div class="modal-body">
+           <div class="container-lg d-flex justify-content-center">
+             <form action={% url 'modificar_pelicula' p.id %} method="post" class="d-md-inline-block w-100 fw-bold">
+               {% csrf_token %}
+               <label class="form-label">Nombre película</label>
+               <input
+                 class="form-control border mb-3"
+                 type="text" value="{{ p.nombre|default:"" }}" name="nombre"
+                 placeholder="Nombre película"
+                 aria-label="Search"
+               />
+               <label class="form-label">URL película</label>
+               <input
+                 class="form-control mb-3"
+                 type="text" value="{{ p.urlPelicula|default:"" }}" name="urlPeli"
+                 placeholder="URL película"
+                 aria-label="Search"
+               />
+               <label class="form-label">Descripción</label>
+               <input
+                 class="form-control mb-3"
+                 type="text" value="{{ p.descripcion|default:"" }}"
+                 name="descripcion"
+                 placeholder="Descripción"
+                 aria-label="Search"
+               />
+               <label class="form-label">Año</label>
+               <input
+                 class="form-control mb-3"
+                 type="text" value="{{ p.año|default:"" }}"
+                 name="año"
+                 placeholder="Año"
+                 aria-label="Search"
+               />
+               <label class="form-label">Director</label>
+               <input
+                 class="form-control mb-3"
+                 type="text" value="{{ p.director|default:"" }}"
+                 name="director"
+                 placeholder="Director"
+                 aria-label="Search"
+               />
+               <label class="form-label">Reparto</label>
+               <input
+                 class="form-control mb-3"
+                 type="text" value="{{ p.reparto|default:"" }}"
+                 name="reparto"
+                 placeholder="Reparto"
+                 aria-label="Search"
+               />
+               <label class="form-label">URL de la portada</label>
+               <input
+                 class="form-control mb-3"
+                 type="text" value="{{ p.urlPortada|default:"" }}"
+                 name="urlPortada"
+                 placeholder="URL de la portada"
+                 aria-label="Search"
+               />
+               <label class="form-label">Valoración</label>
+               <input
+                 class="form-control mb-3"
+                 type="text" value="{{ p.valoracion|default:"" }}"
+                 name="valoracion"
+                 placeholder="Valoración"
+                 aria-label="Search"
+               />
+               <div class="modal-footer">
+                   <button
+                     type="button"
+                     class="btn btn-secondary"
+                     data-bs-dismiss="modal"
+                   >
+                     Cerrar
+                   </button>
+                   <button type="submit" class="btn btn-primary">Guardar</button>
+                 </div>
+             </form>
+           </div>
+         </div>
+         
+       </div>
+     </div>
+   </div>
+   {% endfor %}
 
     <!-- Optional JavaScript; choose one of the two! -->
 
