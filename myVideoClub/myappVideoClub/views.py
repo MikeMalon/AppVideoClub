@@ -1,4 +1,3 @@
-from django import template
 from django.shortcuts import render, redirect
 # Create your views here.
 from django.http import HttpResponse
@@ -17,28 +16,72 @@ def index(request):
      'can_add_pelis' : request.user.has_perm('myappVideoClub.add_pelicula'),
      'can_change_pelis' : request.user.has_perm('myappVideoClub.change_pelicula'),
      'can_delete_pelis' : request.user.has_perm('myappVideoClub.delete_pelicula'),
+     'can_add_users'    : request.user.has_perm('auth.add_user'),
+     'can_change_users' : request.user.has_perm('auth.change_user'),
+     'can_delete_users' : request.user.has_perm('auth.delete_user'),
    }
    return render(request, 'myappVideoClub/index.html',context)
 
+@login_required(login_url='login')
 def gestion_usuarios(request):
    if request.method == 'GET':
       context = {
-         'usuarios': User.objects.all()
+         'usuarios': User.objects.all(),
+         'can_add_pelis' : request.user.has_perm('myappVideoClub.add_pelicula'),
+         'can_change_pelis' : request.user.has_perm('myappVideoClub.change_pelicula'),
+         'can_delete_pelis' : request.user.has_perm('myappVideoClub.delete_pelicula'),
+         'can_add_users'    : request.user.has_perm('auth.add_user'),
+         'can_change_users' : request.user.has_perm('auth.change_user'),
+         'can_delete_users' : request.user.has_perm('auth.delete_user'),
       }
       return render(request,'myappVideoClub/gestion_usuarios.html',context)
    elif request.method == 'POST':
       nombre = request.POST['nombre']
       contraseña = request.POST['contraseña']
       correo = request.POST['correo']
-      nuevoUsuario = User.objects.create_user(nombre,contraseña,correo)
+      nuevoUsuario = User.objects.create_user(nombre,correo,contraseña)
       nuevoUsuario.save()
       return redirect('gestion_usuarios')
 
+@login_required(login_url='login')
 def gestion_peliculas(request):
+   if request.method == 'GET':
+      context = {
+         'peliculas': models.Pelicula.objects.all(),
+         'can_add_pelis' : request.user.has_perm('myappVideoClub.add_pelicula'),
+         'can_change_pelis' : request.user.has_perm('myappVideoClub.change_pelicula'),
+         'can_delete_pelis' : request.user.has_perm('myappVideoClub.delete_pelicula'),
+         'can_add_users'    : request.user.has_perm('auth.add_user'),
+         'can_change_users' : request.user.has_perm('auth.change_user'),
+         'can_delete_users' : request.user.has_perm('auth.delete_user'),
+      }
+      return render(request,'myappVideoClub/gestion_peliculas.html',context)
+   elif request.method == 'POST':
+      nombrePeli = request.POST['nombre']
+      urlPeli = request.POST['urlPeli']
+      descripcion = request.POST['descripcion']
+      año = request.POST['año']
+      director = request.POST['director']
+      reparto = request.POST['reparto']
+      urlPortada = request.POST['urlPortada']
+      valoracion = request.POST['valoracion']
+      nuevaPeli = models.Pelicula(nombre=nombrePeli,urlPelicula=urlPeli,descripcion=descripcion,año=año,director=director,reparto=reparto,urlPortada=urlPortada,valoracion=valoracion)
+      nuevaPeli.save()
+      return redirect('gestion_peliculas')
 
-   return render(request, 'myappVideoClub/gestion_peliculas.html',{})
-     
-      
+@login_required(login_url='login')
+def eliminar_pelicula(request,Pelicula_id):
+   peliculas = models.Pelicula.objects.filter(id=Pelicula_id)
+   for p in peliculas:
+      p.delete()
+   return redirect('gestion_peliculas') #Volvemos a la pantalla principal de las peliculas del administrador
+
+@login_required(login_url='login')
+def eliminar_usuario(request,User_id):
+   usuarios = User.objects.filter(id=User_id)
+   for u in usuarios:
+      u.delete()
+   return redirect('gestion_usuarios') #Volvemos a la pantalla principal de los usuarios del administrador
 
 def userlogin(request):
    if request.method == 'GET':
