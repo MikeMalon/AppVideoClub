@@ -100,7 +100,7 @@
                     <td>
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Editar</button>
                         <ul class="dropdown-menu dropdown-menu-end">
-                          <li><a class="dropdown-item" href={% url 'modificar_usuario' %}>Modificar</a></li>
+                          <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#m{{u.id}}">Modificar</a></li>
                           <li><a class="dropdown-item" href={% url 'eliminar_usuario' u.id %}>Eliminar</a></li>
                         </ul>
                     </td>  
@@ -120,7 +120,7 @@
     </div>
 
 
-    <!-- Modal -->
+    <!-- Modal añadir usuario -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -155,7 +155,71 @@
         </div>
     </div>
 
-
+     <!-- Modal modificar usuario -->
+     {% for u in usuarios %}
+     <div
+     class="modal fade"
+     id="m{{u.id}}"
+     tabindex="-1"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true"
+   >
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title" id="exampleModalLabel">Modificar usuario</h5>
+           <button
+             type="button"
+             class="btn-close"
+             data-bs-dismiss="modal"
+             aria-label="Close"
+           ></button>
+         </div>
+         <div class="modal-body">
+           <div class="container-lg d-flex justify-content-center">
+             <form action={% url 'modificar_usuario' u.id %} method="post" class="d-md-inline-block w-100 fw-bold">
+               {% csrf_token %}
+               <label class="form-label">Nombre usuario</label>
+               <input
+                 class="form-control border mb-3"
+                 type="text" value="{{ u.username|default:"" }}" name="nombre"
+                 placeholder="Nombre usuario"
+                 aria-label="Search"
+               />
+               <label class="form-label">Password</label>
+               <input
+                 class="form-control mb-3"
+                 type="text" value="{{ u.password|default:"" }}" name="contraseña"
+                 placeholder="Contraseña"
+                 aria-label="Search"
+               />
+               <label class="form-label">Email</label>
+               <input
+                 class="form-control mb-3"
+                 type="text" value="{{ u.email|default:"" }}"
+                 name="correo"
+                 placeholder="Correo Electrónico"
+                 aria-label="Search"
+               />
+              
+               <div class="modal-footer">
+                   <button
+                     type="button"
+                     class="btn btn-secondary"
+                     data-bs-dismiss="modal"
+                   >
+                     Cerrar
+                   </button>
+                   <button type="submit" class="btn btn-primary">Guardar</button>
+                 </div>
+             </form>
+           </div>
+         </div>
+         
+       </div>
+     </div>
+   </div>
+   {% endfor %}
 
     <!-- Optional JavaScript; choose one of the two! -->
 

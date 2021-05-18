@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Permission
 from django.contrib.auth.models import User
 from myappVideoClub import models
+import hashlib, uuid
+
 
 
 @login_required(login_url='login')
@@ -97,7 +99,7 @@ def modificar_pelicula(request,Pelicula_id):
    valoracion = request.POST['valoracion']
    for p in peliculas:
       p.nombre = nombrePeli
-      p.urlPeli = urlPeli 
+      p.urlPeli = urlPeli
       p.descripcion = descripcion
       p.año = año
       p.director = director
@@ -106,6 +108,18 @@ def modificar_pelicula(request,Pelicula_id):
       p.valoracion = valoracion
       p.save()
    return redirect('gestion_peliculas')
+
+def modificar_usuario(request,User_id):
+   usuarios = User.objects.filter(id=User_id)
+   nombre = request.POST['nombre']
+   contraseña = request.POST['contraseña']
+   correo = request.POST['correo']
+   for u in usuarios:
+      u.username = nombre
+      u.set_password = contraseña
+      u.email = correo
+      u.save()
+   return redirect('gestion_usuarios')
 
 def userlogin(request):
    if request.method == 'GET':
