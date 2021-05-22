@@ -1,5 +1,6 @@
 
 
+from decimal import Context
 from re import search
 from django.db.models import query
 from django.shortcuts import render, redirect
@@ -78,6 +79,47 @@ def api_request(request,Pelicula_nombre):
          else:
             contador = contador + 1
    return redirect('index')
+
+def pelicula(request,Pelicula_id):
+   pelis = models.Pelicula.objects.filter(id=Pelicula_id)
+   nombre1 = ""
+   for pe in pelis:
+      nombre1 = pe.nombre
+   nombre = nombre1.replace(' ','%20')
+   search = 'https://api.themoviedb.org/3/search/movie?api_key=1ade8415b093864d65de28be8252ec92&language=es-ES&query=' + nombre + '&page=1&include_adult=false' 
+   info = requests.get(search)
+   #info = requests.get('https://api.themoviedb.org/3/movie/'  +  + '?api_key=1ade8415b093864d65de28be8252ec92&language=es-ES')
+   path = 'https://image.tmdb.org/t/p/w500'
+   info2 = info.json()
+   info21 = info2['results']
+   for p in pelis:
+      contador = 0
+      for i in info21: 
+         if(info2['total_pages'] != 0 and info21[contador]['poster_path'] != None and info21[contador]['original_title'] != None and info21[contador]['overview'] != None and info21[contador]['release_date'] != None and info21[contador]['vote_average'] != None):
+            p.nombre = info21[contador]['original_title']
+            p.descripcion = info21[contador]['overview']
+            p.año = info21[contador]['release_date']
+            #p.director = info21[contador]['']
+            #p.reparto = info21[contador]['']
+            p.valoracion = info21[contador]['vote_average']
+            p.urlPortada = path + info21[contador]['poster_path']
+            p.save()
+            break
+         else:
+            contador = contador + 1
+   context = {
+      'peliculas' :  models.Pelicula.objects.filter(id=Pelicula_id),
+      'can_add_pelis' : request.user.has_perm('myappVideoClub.add_pelicula'),
+      'can_change_pelis' : request.user.has_perm('myappVideoClub.change_pelicula'),
+      'can_delete_pelis' : request.user.has_perm('myappVideoClub.delete_pelicula'),
+      'can_add_users'    : request.user.has_perm('auth.add_user'),
+      'can_change_users' : request.user.has_perm('auth.change_user'),
+      'can_delete_users' : request.user.has_perm('auth.delete_user'),
+   }
+   return render(request,'myAppVideoClub/pelicula.html',context)
+
+
+
 
 @login_required(login_url='login')
 def gestion_usuarios(request):

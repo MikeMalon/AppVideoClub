@@ -6,3 +6,4 @@ class PeliculaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pelicula
         fields = ('nombre','urlPelicula','descripcion','año','director','reparto','urlPortada','valoracion')
+

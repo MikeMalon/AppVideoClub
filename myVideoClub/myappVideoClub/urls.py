@@ -12,5 +12,6 @@ urlpatterns = [
  path('eliminar_usuario/<int:User_id>/',views.eliminar_usuario,name='eliminar_usuario'),
  path('modificar_usuario/<int:User_id>/',views.modificar_usuario,name='modificar_usuario'),
  path('api_request/<str:Pelicula_nombre>/',views.api_request,name='api_request'),
+ path('pelicula/<int:Pelicula_id>/',views.pelicula,name='pelicula'),
  
 ]
