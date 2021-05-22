@@ -54,10 +54,18 @@
                 </ul>
 
 
-                <form class="d-flex py-2">
-                    <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
+                <form class="d-flex py-2" role="busqueda">
+                    <input onsubmit="busqueda()" class="form-control me-2" type="search" name="buscar" id="buscar" placeholder="Buscar..." aria-label="Busqueda">
 
                 </form>
+                <script>
+                    function busqueda(){
+                        let bus = document.getElementsByName('buscar').values;
+                    }
+                    
+
+
+                </script>
 
                 <div class="dropdown d-flex text-end py-2 ">
                     <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser1"
@@ -98,13 +106,13 @@
                 </div>
             </div>
             <div class="carousel-item text-center">
-                <img src="https://posteritati.com/posters/000/000/056/927/ferris-buellers-day-off-md-web.jpg" class="img-fluid" alt="Space Jam">
+                <img src="https://static.posters.cz/image/750webp/76483.webp" class="img-fluid" alt="Space Jam">
                 <div class="carousel-caption d-none d-md-block">
                     
                 </div>
             </div>
             <div class="carousel-item text-center">
-                <img src="https://posteritati.com/posters/000/000/056/927/ferris-buellers-day-off-md-web.jpg" class="img-fluid" alt="Luca Disney">
+                <img src="https://static.posters.cz/img/room/merch1.jpg" class="img-fluid" alt="Luca Disney">
                 <div class="carousel-caption d-none d-md-block">
                     
                 </div>
@@ -121,11 +129,15 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+    <script type="text/javascript">
+        function modalApi(nombre)
+        let modal = document.getElementById("m{{p.id}}"); //Cogemos el modal con nombre de la película
 
+    </script>
     
 
     <!--PELICULAS-->
-    <!--https://www.joblo.com/assets/images/joblo/posters/2021/04/army-of-the-dead-poster.jpg-->
+    <!---->
     <div class="container-lg mb-5">
         <div class="row g-4">
             {% for p in peliculas %}
@@ -143,8 +155,7 @@
                         src="https://www.joblo.com/assets/images/oldsite/posters/images/full/shit-poster.jpg"
                         class="img-fluid   img-thumbnail btn-outline-primary"></a>       
                 {% endif %}        
-                <p class="text-center my-2 text-light"><a href="#" data-bs-toggle="modal"
-                        data-bs-target="#m{{ p.id }}" class="text-decoration-none link-light">{{ p.nombre }}</a>
+                <p class="text-center my-2 text-light"><a href=# class="text-decoration-none link-light">{{ p.nombre }}</a>
                 </p>   
             </div>
             {% endfor %}
@@ -244,36 +255,30 @@
                                 </iframe>
                             </div>
                         </div>
-                        
+                        {% if p.año != "" and p.director != "" and p.reparto != "" and p.valoracion != "" and p.descripcion != ""  %}
                         <div class="col-4">
-                            {% if p.año != "" %}
                             <p class="text-light">Año: {{ p.año }}</p>
-                            {% else %}
-                            <!--Llamar a la API-->
-                            {% endif %}
-                            {% if p.director != "" %}
                             <p class="text-light">Director: {{ p.director }}</p>
-                            {% else %}
-                            <!--Llamar a la API-->
-                            {% endif %}
-                            {% if p.reparto != "" %}
                             <p class="text-light">Reparto: {{ p.reparto }}</p>
-                            {% else %}
-                            <!--Llamar a la API-->
-                            {% endif %}
-                            {% if p.valoracion != "" %}
                             <p class="text-light">Valoración: {{ p.valoracion }}</p>
-                            {% else %}
-                            <!--Llamar a la API-->
-                            {% endif %}
                         </div>
                         <div class="col-12">
-                            {% if p.descripcion != "" %}
-                            <p class="text-light">{{ p.descripcion }}</p>
-                            {% else %}
-                            <!--Llamar a la API-->
-                            {% endif %}
+                            <p class="text-light">{{ p.descripcion }}</p>   
                         </div>
+                        {% else %}
+                        <div class="col-4">
+                            <a href={% url 'api_request' p.nombre %}>Pulsa aquí para actualizar la información desde la API TheMovieDB</a>
+                            <p class="text-light">Año: {{ p.año }}</p>
+                            <p class="text-light">Director: {{ p.director }}</p>
+                            <p class="text-light">Reparto: {{ p.reparto }}</p>
+                            <p class="text-light">Valoración: {{ p.valoracion }}</p>
+                        </div>
+                        <div class="col-12">
+                            <p class="text-light">{{ p.descripcion }}</p>   
+                        </div>
+                        {% endif %} 
+                       
+                       
                     </div>
 
 

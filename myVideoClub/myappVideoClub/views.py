@@ -1,4 +1,7 @@
 
+
+from re import search
+from django.db.models import query
 from django.shortcuts import render, redirect
 # Create your views here.
 from django.http import HttpResponse
@@ -7,13 +10,30 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Permission
 from django.contrib.auth.models import User
+import requests
 from myappVideoClub import models
-import hashlib, uuid
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.request import Request
+from rest_framework.response import Response
+from myappVideoClub.serializers import *
+import tmdbsimple as tmdb
+import json
 
 
 
 @login_required(login_url='login')
 def index(request):
+   pelis = models.Pelicula.objects.all()
+   for p in pelis:
+      nombre1 = p.nombre
+      nombre = nombre1.replace(' ','%20')
+      search = ' https://api.themoviedb.org/3/search/movie?api_key=1ade8415b093864d65de28be8252ec92&language=es-ES&query=' + nombre + '&page=1&include_adult=false' 
+      info = requests.get(search)
+      #info = requests.get('https://api.themoviedb.org/3/movie/'  +  + '?api_key=1ade8415b093864d65de28be8252ec92&language=es-ES')
+   path = 'https://image.tmdb.org/t/p/original'
+   info2 = info.json()
+   info21 = info2['results']
    context = {
      'peliculas' : models.Pelicula.objects.all(),
      'nombres' : models.Pelicula.objects.values('nombre'),
@@ -23,8 +43,41 @@ def index(request):
      'can_add_users'    : request.user.has_perm('auth.add_user'),
      'can_change_users' : request.user.has_perm('auth.change_user'),
      'can_delete_users' : request.user.has_perm('auth.delete_user'),
+     #'descripcion' : info21[0]['overview'],
+     #'año': info21[0]['release_date'],
+     #'director': info2[''],
+     #'reparto' : info2[''],
+     #'valoracion' : info21[0]['vote_average'],
+     #'urlPortada' : path + info21[1]['poster_path'],
    }
    return render(request, 'myappVideoClub/index.html',context)
+
+def api_request(request,Pelicula_nombre):
+   pelis = models.Pelicula.objects.filter(nombre=Pelicula_nombre)
+   nombre1 = Pelicula_nombre
+   nombre = nombre1.replace(' ','%20')
+   search = 'https://api.themoviedb.org/3/search/movie?api_key=1ade8415b093864d65de28be8252ec92&language=es-ES&query=' + nombre + '&page=1&include_adult=false' 
+   info = requests.get(search)
+   #info = requests.get('https://api.themoviedb.org/3/movie/'  +  + '?api_key=1ade8415b093864d65de28be8252ec92&language=es-ES')
+   path = 'https://image.tmdb.org/t/p/w500'
+   info2 = info.json()
+   info21 = info2['results']
+   for p in pelis:
+      contador = 0
+      for i in info21: 
+         if(info2['total_pages'] != 0 and info21[contador]['poster_path'] != None and info21[contador]['original_title'] != None and info21[contador]['overview'] != None and info21[contador]['release_date'] != None and info21[contador]['vote_average'] != None):
+            p.nombre = info21[contador]['original_title']
+            p.descripcion = info21[contador]['overview']
+            p.año = info21[contador]['release_date']
+            #p.director = info21[contador]['']
+            #p.reparto = info21[contador]['']
+            p.valoracion = info21[contador]['vote_average']
+            p.urlPortada = path + info21[contador]['poster_path']
+            p.save()
+            break
+         else:
+            contador = contador + 1
+   return redirect('index')
 
 @login_required(login_url='login')
 def gestion_usuarios(request):
@@ -120,6 +173,23 @@ def modificar_usuario(request,User_id):
       u.email = correo
       u.save()
    return redirect('gestion_usuarios')
+
+
+   
+   #tmdb.API_KEY="1ade8415b093864d65de28be8252ec92"
+   #busqueda = tmdb.Search()
+   #respuesta = busqueda.movie(query=Pelicula_nombre)
+   #descripcion = ""
+   #for r in respuesta.results:
+      #descripcion = r['overview']
+   #for p in peliculas:
+      #p.descripcion = descripcion   
+   #return render(request,'myappVideoClub/index',context={'apiP' : peliculas}) 
+
+
+      
+
+
 
 def userlogin(request):
    if request.method == 'GET':
