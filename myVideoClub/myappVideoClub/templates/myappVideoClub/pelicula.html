@@ -35,7 +35,7 @@
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark ">
         <div class="container-xl">
 
-            <a class="navbar-brand fs-3 text-warning fw-bold text-uppercase" href="#">Shitflix</a>
+            <a class="navbar-brand fs-3 text-warning fw-bold text-uppercase" href={% url 'index' %}>Shitflix</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
                 aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,7 +93,7 @@
         <div class="container-lg mt-5">
             {% for p in peliculas %}
             <div class="row g-2">
-                <div class="col-8">
+                <div class="col-7">
                     <h5 class="text-light">{{p.nombre}}</h5>
                     <div class="ratio ratio-16x9">
                     <iframe src={{ p.urlPeli }} title="YouTube video player"
@@ -103,14 +103,16 @@
                     </div>
                 </div>
                 
-                <div class="col-4 pt-4">
+                <div class="col-2 pt-4">
                     <p class="text-light">Año: {{ p.año }}</p>
                     <p class="text-light">Director: {{ p.director }}</p>
                     <p class="text-light">Reparto: {{ p.reparto }}</p>
                     <p class="text-light">Valoración: {{ p.valoracion }}</p>
                 </div>
-                <div>
-                    
+                <div class = "col-3 pt-4">
+                    <img
+                    src="{{ p.urlPortada }}"
+                    class="img-fluid"></a>
                 </div>
     
                 <div class="col-12">
