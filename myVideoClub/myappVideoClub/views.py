@@ -80,6 +80,7 @@ def api_request(request,Pelicula_nombre):
             contador = contador + 1
    return redirect('index')
 
+@login_required(login_url='login')
 def pelicula(request,Pelicula_id):
    pelis = models.Pelicula.objects.filter(id=Pelicula_id)
    nombre1 = ""

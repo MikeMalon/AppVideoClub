@@ -14,7 +14,7 @@
         body {
             /*background: rgb(2, 0, 36);
             background: linear-gradient(185deg, rgba(2, 0, 36, 1) 40%, rgba(189, 117, 46, 1) 86%);*/
-            background: url("https://www.joblo.com/assets/images/arrow/bg-wrapper.jpg");
+            background: url("https://p4.wallpaperbetter.com/wallpaper/906/415/604/texture-wood-monochrome-gray-wallpaper-preview.jpg");
             background-size: cover;
         }
 
@@ -94,29 +94,29 @@
             {% for p in peliculas %}
             <div class="row g-2">
                 <div class="col-7">
-                    <h5 class="text-light">{{p.nombre}}</h5>
+                    <h5 class="text-light fs-1">{{p.nombre}}</h5>
                     <div class="ratio ratio-16x9">
-                    <iframe src={{ p.urlPeli }} title="YouTube video player"
+                    <iframe src= " {{ p.urlPelicula }}" title="YouTube video player"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen>
                     </iframe>
                     </div>
                 </div>
                 
-                <div class="col-2 pt-4">
+                <div class="col-2 pt-5 fs-4">
                     <p class="text-light">Año: {{ p.año }}</p>
                     <p class="text-light">Director: {{ p.director }}</p>
                     <p class="text-light">Reparto: {{ p.reparto }}</p>
                     <p class="text-light">Valoración: {{ p.valoracion }}</p>
                 </div>
-                <div class = "col-3 pt-4">
+                <div class = "col-3 pt-5">
                     <img
-                    src="{{ p.urlPortada }}"
+                    src=" {{ p.urlPortada }}"
                     class="img-fluid"></a>
                 </div>
     
                 <div class="col-12">
-                    <p class="text-light">{{ p.descripcion }} Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi ea earum illo aut nemo. Alias temporibus voluptates, sit labore quas voluptate ratione maiores, dolores exercitationem, officia magnam sequi suscipit modi?</p>   
+                    <p class="text-light fs-5">{{ p.descripcion }}</p>   
                 </div>
     
             </div>
