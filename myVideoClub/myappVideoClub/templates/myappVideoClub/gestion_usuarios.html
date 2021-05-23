@@ -133,13 +133,13 @@
                         <form action={% url 'gestion_usuarios' %} method="post" class="d-md-inline-block w-100 fw-bold">
                             {% csrf_token %}
                             <label class="form-label">Nombre usuario</label>
-                            <input class="form-control border mb-3" name="nombre" type="search" placeholder="Nombre usuario"
+                            <input required class="form-control border mb-3" name="nombre" type="text" placeholder="Nombre usuario"
                                 aria-label="Search">
                             <label class="form-label">Contraseña</label>
-                            <input class="form-control mb-3" name="contraseña" type="password" placeholder="Contraseña"
+                            <input required class="form-control mb-3" name="contraseña" type="password" placeholder="Contraseña"
                                 aria-label="Search">
                             <label class="form-label">Correo electrónico</label>
-                            <input class="form-control mb-3" name="correo" type="search" placeholder="Correo electrónico"
+                            <input required class="form-control mb-3" name="correo" type="email" placeholder="Correo electrónico"
                                 aria-label="Search">
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
